@@ -1,8 +1,8 @@
 # semisup-seg-efficient
 
-Code for reproducing results from "[A baseline for semi-supervised learning of efficient semantic segmentation models](https://arxiv.org/abs/2106.07075)".
+Code for reproducing results from the paper "[A baseline for semi-supervised learning of efficient semantic segmentation models](https://arxiv.org/abs/2106.07075)".
 
-This repository also contains slides and some figures.
+There are also slides and some figures in "data".
 
 ## Setup
 
@@ -22,9 +22,7 @@ For the directory structure for datasets, results and other data, see the [direc
 
 CIFAR-10 will be downloaded automatically to the "datasets" directory. The directory for Cityscapes, "datasets/Cityscapes", has to be set up manually.
 
-1. From <https://www.cityscapes-dataset.com/downloads/> download:
-    - leftImg8bit_trainvaltest.zip (11GB)
-    - gtFine_trainvaltest.zip (241MB)
+1. From <https://www.cityscapes-dataset.com/downloads/> download `leftImg8bit_trainvaltest.zip` (11GiB) and `gtFine_trainvaltest.zip` (241MiB).
 2. Unzip both files directly into "datasets/Cityscapes" so that training images and labels are in "Cityscapes/leftImg8bit/train" and "Cityscapes/gtFine/train".
 
 ### Configuration check
@@ -36,6 +34,8 @@ bash test_setup.sh
 ```
 
 Vidlu should be visible to Python through `PYTHONPATH`. The `CUDA_VISIBLE_DEVICES` environment variable can be used to choose a GPU.
+
+`vidlu_ext` is a [Vidlu extension](https://github.com/Ivan1248/Vidlu#extensions). It must be in the working directory or findable via `PYTHONPATH` so that Vidlu can find and load it. Everything should work if you run scripts from the root of this repository.
 
 ## Experiments
 
