@@ -2,7 +2,7 @@
 
 Code for reproducing results from "[A baseline for semi-supervised learning of efficient semantic segmentation models](https://arxiv.org/abs/2106.07075)".
 
-This repository also contains slides, and some figures.
+This repository also contains slides and some figures.
 
 ## Setup
 
