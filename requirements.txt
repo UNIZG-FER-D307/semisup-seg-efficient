@@ -1,2 +1,2 @@
 torch>=1.9.0
-git+git://github.com/Ivan1248/vidlu@e8f06fd#egg=vidlu
+git+git://github.com/Ivan1248/vidlu@7bde173#egg=vidlu
