@@ -9,8 +9,8 @@ from vidlu.optim.lr_schedulers import CosineLR
 import vidlu.optim as vo
 from vidlu.training import steps
 import vidlu.training.extensions as te
-from vidlu.training.robustness import attacks
-from vidlu.training.robustness import perturbation as pert
+from vidlu.training.robustness import attacks, perturbation as pert
+from vidlu.modules.utils import init
 from vidlu.configs.training import TrainerConfig, OptimizerMaker
 import vidlu.modules.inputwise as vmi
 
@@ -19,9 +19,9 @@ import vidlu.modules.inputwise as vmi
 phtps_attack_20 = partial(
     attacks.PertModelAttack,
     pert_model_f=partial(pert.PhotoTPS20, clamp=False, forward_arg_count=3),
-    initializer=pert.MultiInit(
-        tps=pert.NormalInit({'offsets': (0, 0.1)}),
-        photometric=pert.UniformInit(
+    initializer=init.MultiInit(
+        tps=init.NormalInit({'offsets': (0, 0.1)}),
+        photometric=init.UniformInit(
             {'add_v.addend': [-0.25, 0.25],
              'mul_s.factor': [0.25, 2.],
              'add_h.addend': [-0.1, 0.1],
