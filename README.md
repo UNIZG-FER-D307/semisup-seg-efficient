@@ -8,7 +8,11 @@ There are also slides and some figures in "data".
 
 ### Dependencies
 
-The code depends on [Vidlu v0.1.0](https://github.com/Ivan1248/vidlu/releases/tag/v0.1.0). If Vidlu is not installed, you might have to add the root directory of the repository to the `PYTHONPATH` environment variable. E.g. in Bash, this should run without error with "path/to/vidlu" substituted for the correct path:
+The code depends on [Vidlu v0.1.0](https://github.com/Ivan1248/vidlu/releases/tag/v0.1.0). It can be downloaded with
+```sh
+git clone https://github.com/Ivan1248/vidlu.git --branch v0.1.0
+```
+If Vidlu is not installed, you might have to add the root directory of the repository to the `PYTHONPATH` environment variable. E.g. in Bash, this should run without error with "path/to/vidlu" substituted for the correct path:
 
 ```sh
 PYTHONPATH="${PYTHONPATH}:path/to/vidlu" python -c "import vidlu.utils; print('success')"
