@@ -121,14 +121,19 @@ def train(args):
 
         if args.eval_with_pop_stats:
             eval_with_pop_stats(exp, exp.data.train)
+        log_run('done', str(exp.cpman.id_to_perf))
 
         if not args.no_train_eval:
-            print(f'\nEvaluating on training data ({", ".join(training_datasets.keys())})...')
             for name, ds in training_datasets.items():
-                exp.trainer.eval(ds)
-
+                print(f'\nEvaluating on training data ({name})...')
+                try:
+                    exp.trainer.eval(ds)
+                except ValueError as e:
+                    if 'not enough values to unpack' in e.args[0]:
+                        warnings.warn(e.args[0])
+                    else:
+                        raise
         print(exp.cpman.id_to_perf)
-        log_run('done', str(exp.cpman.id_to_perf))
 
     if args.profile:
         print(prof.key_averages().table(sort_by="self_cuda_time_total"))
@@ -159,8 +164,11 @@ def test(args):
         module_name, proc_name, *_ = *module_arg.split(':'), None
         if proc_name is None:
             proc_name = 'run'
-
-        module = importlib.import_module(module_name)
+        try:
+            module = importlib.import_module(module_name)
+        except ImportError as e:
+            from vidlu.factories import extensions
+            module = extensions[module_name]
         if ',' in proc_name:
             proc_name, args_str = proc_name.split(",", 1)
             result = eval(f"{proc_name}({args_str})", vars(module), locals())
@@ -241,7 +249,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    debug.set_traceback_format(call_pdb=args.debug, verbose=args.debug)
+    debug.set_traceback_format(call_pdb=args.debug, verbose=args.verbosity > 2)
 
     with indent_print("Arguments:"):
         print(args)
@@ -259,9 +267,9 @@ if __name__ == "__main__":
     if args.debug:
         print("Debug: Autograd anomaly detection on.")
         torch.autograd.set_detect_anomaly(True)
-        debug.trace_calls(depth=122,
-                          filter_=lambda frame, *a, **k: "vidlu" in frame.f_code.co_filename
-                                                         and not frame.f_code.co_name[0] in "_<")
+        # debug.trace_calls(depth=122,
+        #                  filter_=lambda frame, *a, **k: "vidlu" in frame.f_code.co_filename
+        #                                                 and not frame.f_code.co_name[0] in "_<")
 
     if args.warnings_as_errors:
         debug.set_warnings_with_traceback()

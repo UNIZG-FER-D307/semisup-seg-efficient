@@ -41,6 +41,15 @@ The `CUDA_VISIBLE_DEVICES` environment variable can be used to choose a GPU and,
 
 `vidlu_ext` is a [Vidlu extension](https://github.com/Ivan1248/Vidlu#extensions). It must be in the working directory or findable via `PYTHONPATH` so that Vidlu can find and load it. Everything should work if you run scripts from the root of this repository.
 
+The command
+```
+python -c "import vidlu.factories; print(vidlu.factories.extensions)"
+```
+should print something like
+```
+ExtensionDict(ext=<module 'vidlu_ext' from '/path/to/semisup-seg-efficient/vidlu_ext/__init__.py'>)
+```
+
 ## Experiments
 
 Each table from the paper has its own script. You might want to comment out some parts or change the number of runs per experiment.
