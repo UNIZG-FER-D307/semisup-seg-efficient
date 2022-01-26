@@ -71,3 +71,24 @@ Qualitative results (Figure 1 in appendix):
 ```sh
 bash generate_images.sh
 ```
+
+## The paper
+
+Conference version: http://www.mva-org.jp/Proceedings/2021/papers/P2-3.pdf  
+Updated version on ArXiv: https://arxiv.org/abs/2106.07075
+
+BibTeX:
+```
+@inproceedings{grubisic2021mva,
+  author    = {Ivan Grubi\v{s}i\'{c} and
+               Marin Or\v{s}i\'{c} and
+               Sini\v{s}a \v{S}egvi\'{c}},
+  title     = {A baseline for semi-supervised learning of efficient semantic segmentation models},
+  booktitle = {17th International Conference on Machine Vision and Applications, {MVA} 2021, Aichi, Japan, July 25-27, 2021},
+  pages     = {1--5},
+  publisher = {{IEEE}},
+  year      = {2021},
+  url       = {https://arxiv.org/abs/2106.07075},
+  doi       = {10.23919/MVA51890.2021.9511402},
+}
+```
