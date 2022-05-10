@@ -6,16 +6,27 @@ There are also slides and some figures in "data".
 
 ## Setup
 
+Download the repository with
+```sh
+git clone https://github.com/Ivan1248/semisup-seg-efficient
+```
+
 ### Dependencies
 
-The code depends on [Vidlu v0.1.0](https://github.com/Ivan1248/vidlu/releases/tag/v0.1.0). It can be downloaded with
+The code depends on [Vidlu v0.1.0](https://github.com/Ivan1248/vidlu/releases/tag/v0.1.0), which can be downloaded with
 ```sh
 git clone https://github.com/Ivan1248/vidlu.git --branch v0.1.0
 ```
-If Vidlu is not installed, you might have to add the root directory of the repository to the `PYTHONPATH` environment variable. E.g. in Bash, this should run without error with "path/to/vidlu" substituted for the correct path:
+or installed with
+```sh
+pip install git+https://github.com/Ivan1248/vidlu@v0.1.0
+```
+Note that you have to use the version tagged "v0.1.0" for this code to work. 
+
+If you have only downloaded Vidlu, you might have to add its root directory (the one that contains `vidlu`, `scripts`, `README.md`, ...) to the `PYTHONPATH` environment variable. E.g. in Bash, this should run without error with "`PYTHONPATH="${PYTHONPATH}:path/to/vidlu-repo`" substituted for the root path of the Vidlu repository:
 
 ```sh
-PYTHONPATH="${PYTHONPATH}:path/to/vidlu" python -c "import vidlu.utils; print('success')"
+PYTHONPATH="${PYTHONPATH}:path/to/vidlu-repo" python -c "import vidlu.utils; print('success')"
 ```
 
 ### Directory structure
@@ -34,6 +45,7 @@ CIFAR-10 will be downloaded automatically to the "datasets" directory. The direc
 This runs 3 experiment configurations for checking whether everything is set up properly:
 
 ```sh
+cd semisup-seg-efficient
 bash test_setup.sh
 ```
 
