@@ -4,6 +4,10 @@ Code for reproducing results from the paper "[A baseline for semi-supervised lea
 
 There are also slides and some figures in "data".
 
+**To do**: I will update the code to include additional experiments and figures from "[Revisiting consistency for semi-supervised semantic segmentation
+](https://arxiv.org/abs/2106.07075)".
+
+
 ## Setup
 
 Download the repository with
